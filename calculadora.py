@@ -1,7 +1,10 @@
 """
 Intento de creacion de una Calculadora funcional
 """
-import tkinter as tk
+try:
+    import Tkinter as tk
+except ModuleNotFoundError:
+    import tkinter as tk
 
 #parametros de la ventana
 ventana = tk.Tk()
@@ -26,8 +29,7 @@ class num_boton:
                   text=self.num,
                   width = 5, height = 3,
                   relief="raised", borderwidth=3,
-                  command = lambda: print(self.num))\ # imprime el numero pasado por argumentos
-            .grid(padx = 1, pady = 1, row = self.row, column = self.column)
+                  command = lambda: print(self.num)).grid(padx = 1, pady = 1, row = self.row, column = self.column)
 
 
 
