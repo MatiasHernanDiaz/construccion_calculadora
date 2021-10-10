@@ -9,8 +9,7 @@ except ModuleNotFoundError:
 
 #----------------------------------------Funciones--------------------------------------------
 def nun_display(num):
-    return display.insert(1,num) #el 1 permite que el cursor se pocicione despues de ingresar el numero
-
+    display.insert(100,num) #posicciona el cursor en 100, me aseguro de que siempre este a la derecha
 
 
 
