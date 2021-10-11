@@ -7,7 +7,10 @@ except ModuleNotFoundError:
     import tkinter as tk
 
 
+
+
 #----------------------------------------Funciones--------------------------------------------
+
 def nun_display(num):
     #inserta numero
     display.insert(100,num) #posicciona el cursor en 100, me aseguro de que siempre este a la derecha
@@ -80,6 +83,13 @@ root = tk.Tk()
 root.title("CALCULADORA")
 root.config(bg = "#aaffff")
 #root.resizable(False, False) deshabilitar modificar ventana
+
+#---------------------------------------ICONO-----------------------------------------------------
+try:
+    root.iconbitmap('calculadora_icono.ico')
+except:
+    pass
+
 
 #-------------------------------------Frame para display--------------------------------------
 
