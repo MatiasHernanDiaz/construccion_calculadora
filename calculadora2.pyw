@@ -21,34 +21,58 @@ def borrar():
     return display.delete(0, tk.END)
 
 def igual():
+
     cadena = display.get()
-    if "+" in cadena:
-        lista_cadena = cadena.split("+")
-        resultado = int(lista_cadena[0])+int(lista_cadena[1])
-        display.delete(0, tk.END)
-        display.insert(0,str(resultado))
 
-    if "-" in cadena:
-        lista_cadena = cadena.split("-")
-        resultado = int(lista_cadena[0]) - int(lista_cadena[1])
-        display.delete(0, tk.END)
-        display.insert(0, str(resultado))
-    if "x" in cadena:
-        lista_cadena = cadena.split("x")
-        resultado = int(lista_cadena[0]) * int(lista_cadena[1])
-        display.delete(0, tk.END)
-        display.insert(0, str(resultado))
+    try:
+        if "+" in cadena:
+            if "." in cadena:
+                lista_cadena = cadena.split("+")
+                resultado = float(lista_cadena[0])+float(lista_cadena[1])
+                display.delete(0, tk.END)
+                display.insert(0,str(resultado))
+            else:
+                lista_cadena = cadena.split("+")
+                resultado = int(lista_cadena[0]) + int(lista_cadena[1])
+                display.delete(0, tk.END)
+                display.insert(0, str(resultado))
 
-    if "/" in cadena:
-        try:
-            lista_cadena = cadena.split("/")
-            resultado = int(lista_cadena[0]) / int(lista_cadena[1])
-            resultado = int(resultado)
-            display.delete(0, tk.END)
-            display.insert(0, str(resultado))
-        except:
-            display.delete(0, tk.END)
-            display.insert(0, "### ERROR DIV CERO")
+        if "-" in cadena:
+            if "." in cadena:
+                lista_cadena = cadena.split("-")
+                resultado = float(lista_cadena[0]) - float(lista_cadena[1])
+                display.delete(0, tk.END)
+                display.insert(0,str(resultado))
+            else:
+                lista_cadena = cadena.split("-")
+                resultado = int(lista_cadena[0]) - int(lista_cadena[1])
+                display.delete(0, tk.END)
+                display.insert(0, str(resultado))
+
+        if "x" in cadena:
+            if "." in cadena:
+                lista_cadena = cadena.split("x")
+                resultado = float(lista_cadena[0]) * float(lista_cadena[1])
+                display.delete(0, tk.END)
+                display.insert(0,str(resultado))
+            else:
+                lista_cadena = cadena.split("x")
+                resultado = int(lista_cadena[0]) * int(lista_cadena[1])
+                display.delete(0, tk.END)
+                display.insert(0, str(resultado))
+
+        if "/" in cadena:
+            try:
+                lista_cadena = cadena.split("/")
+                resultado = float(lista_cadena[0]) / float(lista_cadena[1])
+                display.delete(0, tk.END)
+                display.insert(0, str(resultado))
+            except:
+                display.delete(0, tk.END)
+                display.insert(0, "### ERROR DIV CERO")
+    except:
+        display.delete(0, tk.END)
+        display.insert(0, "### ERROR ###")
 
 #-----------------------------------------Ventana----------------------------------------------
 
