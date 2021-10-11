@@ -9,14 +9,46 @@ except ModuleNotFoundError:
 
 #----------------------------------------Funciones--------------------------------------------
 def nun_display(num):
+    #inserta numero
     display.insert(100,num) #posicciona el cursor en 100, me aseguro de que siempre este a la derecha
 
 def simbolo_display(simbolo):
+    #inserta simbolo visualmente
     return display.insert(100,simbolo)
 
+def borrar():
+    #borrar con C
+    return display.delete(0, tk.END)
 
+def igual():
+    cadena = display.get()
+    if "+" in cadena:
+        lista_cadena = cadena.split("+")
+        resultado = int(lista_cadena[0])+int(lista_cadena[1])
+        display.delete(0, tk.END)
+        display.insert(0,str(resultado))
 
+    if "-" in cadena:
+        lista_cadena = cadena.split("-")
+        resultado = int(lista_cadena[0]) - int(lista_cadena[1])
+        display.delete(0, tk.END)
+        display.insert(0, str(resultado))
+    if "x" in cadena:
+        lista_cadena = cadena.split("x")
+        resultado = int(lista_cadena[0]) * int(lista_cadena[1])
+        display.delete(0, tk.END)
+        display.insert(0, str(resultado))
 
+    if "/" in cadena:
+        try:
+            lista_cadena = cadena.split("/")
+            resultado = int(lista_cadena[0]) / int(lista_cadena[1])
+            resultado = int(resultado)
+            display.delete(0, tk.END)
+            display.insert(0, str(resultado))
+        except:
+            display.delete(0, tk.END)
+            display.insert(0, "### ERROR DIV CERO")
 
 #-----------------------------------------Ventana----------------------------------------------
 
@@ -102,28 +134,34 @@ boton9.grid(row = 2, column = 2)
 
 #---------------------------------------botones operacion-------------------------------------
 
-boton_suma = tk.Button(frame_boton, text = "+", width = 3, height = 1, padx = 10, pady = 10, command = lambda: simbolo_display("+"))
+boton_suma = tk.Button(frame_boton, text = "+", width = 3, height = 1, padx = 10, pady = 10, command = lambda: simbolo_display(" + "))
 boton_suma.config(bg = "#fff")
 boton_suma.grid( row = 2, column = 3)
 
-boton_resta = tk.Button(frame_boton, text = "-", width = 3, height = 1, padx = 10, pady = 10, command = lambda: simbolo_display("-"))
+boton_resta = tk.Button(frame_boton, text = "-", width = 3, height = 1, padx = 10, pady = 10, command = lambda: simbolo_display(" - "))
 boton_resta.config(bg = "#fff")
 boton_resta.grid( row = 3, column = 3)
 
-boton_mul = tk.Button(frame_boton, text = "x", width = 3, height = 1, padx = 10, pady = 10, command = lambda: simbolo_display("x"))
+boton_mul = tk.Button(frame_boton, text = "x", width = 3, height = 1, padx = 10, pady = 10, command = lambda: simbolo_display(" x "))
 boton_mul.config(bg = "#fff")
 boton_mul.grid( row = 4, column = 3)
 
-boton_div = tk.Button(frame_boton, text = "/", width = 3, height = 1, padx = 10, pady = 10, command = lambda: simbolo_display("/"))
+boton_div = tk.Button(frame_boton, text = "/", width = 3, height = 1, padx = 10, pady = 10, command = lambda: simbolo_display(" / "))
 boton_div.config(bg = "#fff")
 boton_div.grid( row = 5, column = 3)
 
 #se decide colocar el boton C en frame display, no queda escuadrado, averiguar
 
-boton_borrar = tk.Button(frame_display, text = "C", width = 3, height = 1, padx = 10, pady = 10)
+boton_borrar = tk.Button(frame_display, text = "C", width = 3, height = 1, padx = 10, pady = 10, command = borrar)
 boton_borrar.config(bg = "#fff")
 boton_borrar.grid( row = 1, column = 4)
 
+boton_igual = tk.Button(frame_boton, text = "=", width = 3, height = 1, padx = 10, pady = 10, command = igual)
+boton_igual.config(bg = "#fff")
+boton_igual.grid( row = 5, column = 2)
 
+boton_punto = tk.Button(frame_boton, text = ".", width = 3, height = 1, padx = 10, pady = 10, command = lambda: simbolo_display("."))
+boton_punto.config(bg = "#fff")
+boton_punto.grid( row = 5, column = 0)
 
 root.mainloop()
